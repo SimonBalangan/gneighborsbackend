@@ -8,6 +8,9 @@ import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
+
+const port = process.env.PORT || 8080;
+
 const app = express();
 dotenv.config();
 
@@ -33,6 +36,7 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/hotels", hotelsRoute);
+// app.use("/api/products", hotelsRoute);
 app.use("/api/rooms", roomsRoute);
 
 app.use((err, req, res, next) => {
@@ -46,7 +50,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(8800, () => {
+app.listen(port, () => {
   connect();
   console.log("Connected to backend.");
 });
+
+// app.listen(8800, () => {
+//   connect();
+//   console.log("Connected to backend.");
+// });
